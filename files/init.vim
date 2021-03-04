@@ -15,7 +15,7 @@ call plug#begin('~/.vim/plugged')
 "" MUST BE
 " Plug 'tpope/vim-sensible'
 " git support
-" Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 Plug 'honza/vim-snippets'
 " advanced welcome screen
 Plug 'mhinz/vim-startify'
@@ -34,9 +34,12 @@ Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-projectionist'
 Plug 'dense-analysis/ale'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
+Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
 Plug 'tpope/vim-endwise'
 Plug 'rlue/vim-barbaric'
+Plug 'morhetz/gruvbox'
+Plug 'lyokha/vim-xkbswitch'
+Plug 'ryanoasis/vim-devicons'
 "Plug 'Raimondi/delimitMate'
 
 "" PROBABLY USEFULL
@@ -127,6 +130,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'ekalinin/Dockerfile.vim'
 
 " \ 'coc-docker', https://github.com/neoclide/coc.nvim/pull/2756
+"
 " \ 'coc-tabnine',
 " https://github.com/phpactor/coc-phpactor use when become popular
 let g:coc_global_extensions = [
@@ -157,8 +161,7 @@ let g:coc_global_extensions = [
       \ 'coc-snippets',
       \ 'coc-diagnostic',
       \ 'coc-yank',
-      \ 'coc-git',
-      \]
+      \ 'coc-git']
 
 call plug#end()
 
@@ -169,7 +172,13 @@ filetype plugin on
 " Enable hotkeys for Russian layout
 set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
 
-silent! colorscheme jellybeans
+let g:gruvbox_contrast_dark = 'hard'
+silent! colorscheme gruvbox
+
+
+let g:XkbSwitchLib = '/usr/local/lib/libg3kbswitch.so'
+let g:XkbSwitchEnabled = 1
+
 
 " set visualbell
 " set completeopt=noinsert,menuone,noselect
@@ -261,10 +270,17 @@ nmap "Y "*Y
 nmap "p "*p
 nmap "P "*P
 
+let g:airline_powerline_fonts = 1 "Включить поддержку Powerline шрифтов
+let g:airline#extensions#keymap#enabled = 0 "Не показывать текущий маппинг
+let g:airline_section_z = "\ue0a1:%l/%L Col:%c" "Кастомная графа положения курсора
+let g:Powerline_symbols='unicode' "Поддержка unicode
+let g:airline#extensions#xkblayout#enabled = 0 "Про это позже расскажу
+
 " highlight last inserted text
 nnoremap gV `[v`]
 
 noremap <Leader>s :update<CR>
+noremap <Leader>of :Files<CR>
 
 " Edit .vimrc
 map <leader>vl :vsp $MYVIMRC<CR>
@@ -272,6 +288,7 @@ map <leader>vr :source $MYVIMRC<CR>
 
 vmap gcc <plug>NERDCommenterToggle
 nmap gcc <plug>NERDCommenterToggle
+
 
 let g:NERDDefaultAlign = 'left'
 let g:NERDSpaceDelims = 1
