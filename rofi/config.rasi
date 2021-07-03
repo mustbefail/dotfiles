@@ -1,9 +1,9 @@
 configuration {
 modi: "combi";
-	width: 55;
+	width: 45;
 	lines: 7;
 	columns: 1;
-	font: "Fira Code Medium 18";
+	font: "Fira Code Medium 16";
 /*	location: 0;*/
 	padding: 25;
 /*	yoffset: 0;*/
@@ -33,11 +33,11 @@ modi: "combi";
 /*	auto-select: false;*/
 /*	parse-hosts: false;*/
 /*	parse-known-hosts: true;*/
-	combi-modi: "drun";
+	combi-modi: "windowcd,drun";
 /*	matching: "normal";*/
 /*	tokenize: true;*/
 /*	m: "-5";*/
-/*	line-margin: 2;*/
+	line-margin: 9;
 /*	line-padding: 1;*/
 /*	filter: ;*/
 /*	separator-style: "dash";*/
